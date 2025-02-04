@@ -1,0 +1,6 @@
+# python3.7+
+requests
+python-dotenv
+gunicorn
+gigachat
+pytest

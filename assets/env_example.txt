@@ -1,0 +1,19 @@
+# Cсылка на документацию к АПИ Гигачата
+# https://developers.sber.ru/docs/ru/gigachat/api/reference/rest/gigachat-api
+
+GIGACHAT_API_KEY=apikey  # ключа апи, см. readme.md
+GIGACHAT_MODEL=GigaChat-Max  # модель гигачата по умолчанию, если не будет указана в запросе
+GIGACHAT_SCOPE=GIGACHAT_API_CORP  # поменяйте значение на актуальное для вашей учетной записи
+GIGACHAT_PROFANITY_CHECK=False  # использовать цензов по умолчанию или нет
+EXP_RESP_TIMEOUT=60  # таймаут запроса к Гигачату (внешнему апи)
+EXT_API_RPM=50  # макимальное количество запрсоов в минуту к внешнему апи (Гигачату)
+EXT_MAX_REQUESTS=6  # сколько одновременных запросов будет исполняться к внешнему апи
+APP_NAME=GigaChat-Proxy-API  # имя микросервиса
+HOST=0.0.0.0  # хост микросевриса
+PORT=8078  # порт микросевриса
+THREADS=30  # количество активных python threads микросервиса
+RESP_TIMEOUT=600  # таймаут исполнения запроса к микросевису
+APP_DEBUG=1  # режим дебаг микросервиса 0 или 1
+LOG_LEVEL=DEBUG  # уровент логирования. DEBUG - сохранит лог запросов в микросервис, INFO и выше сохранит только лог ошибок
+# LOG_FILE=./assets/api_log.jsonl  # путь к файлу лога ошибок если нужен другой путь
+# REQUESTS_LOG_FILE=./assets/requests_logs.jsonl  # путь к файлу лога входящих запросов если нужен другой путь
