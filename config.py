@@ -12,7 +12,7 @@ workers = 1
 threads_cnt = int(os.environ.get('THREADS', '20').strip())
 worker_connections = 200
 timeout = int(os.environ.get('RESP_TIMEOUT', '300').strip())  # Ответ от нашего сервиса
-debug = bool(int(os.environ.get('APP_DEBUG', True)))
+debug = bool(int(os.environ.get('APP_DEBUG', '1')))
 max_request_body_size = 1024 * 1024 * 10
 app_name = os.environ['APP_NAME'].strip()
 
