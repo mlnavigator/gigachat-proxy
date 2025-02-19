@@ -47,7 +47,8 @@ class GigaChatWebConnector:
                }
         else:
             generate_parameters = generate_parameters.copy()
-            generate_parameters['max_tokens'] = max_tokens
+            if max_tokens is not None:
+                generate_parameters['max_tokens'] = max_tokens
             generate_parameters['model'] = model_name
 
         req_data = {
