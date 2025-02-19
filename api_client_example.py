@@ -1,4 +1,4 @@
-from typing import List, Tuple, Union, Dict
+from typing import List, Tuple, Union, Dict, Any
 import os
 
 import requests
@@ -21,10 +21,13 @@ class GigaChatWebConnector:
     def __init__(self, *args, **kwargs):
         pass
 
-    def chat(self, messages: List[Tuple[str, str]], max_tokens: Union[int, None] = None, retry_cnt: int = 2) -> str:
+    def chat(self, messages: List[Tuple[str, str]], generate_parameters: Dict[str, Any]=None, model_name: str=model_name,
+             max_tokens: Union[int, None] = None, retry_cnt: int = 2) -> str:
         """
 
         :param messages:
+        :param generate_parameters:
+        :param model_name:
         :param max_tokens:
         :param retry_cnt:
         :return:
@@ -34,15 +37,22 @@ class GigaChatWebConnector:
 
         max_tokens = 2200 if max_tokens is None else max_tokens
 
-        req_data = {
-            'messages': messages,
-            'generate_parameters': {'temperature': 1,
+        if generate_parameters is None:
+            generate_parameters = {'temperature': 1,
                'top_p': 0,
                'repetition_penalty': 1,
                'max_tokens': max_tokens,
                'model': model_name,
                'profanity_check': False,
                }
+        else:
+            generate_parameters = generate_parameters.copy()
+            generate_parameters['max_tokens'] = max_tokens
+            generate_parameters['model'] = model_name
+
+        req_data = {
+            'messages': messages,
+            'generate_parameters': generate_parameters,
         }
 
         data = {}
@@ -65,13 +75,14 @@ class GigaChatWebConnector:
                 print(e)
                 data = {}
 
-        res = data['choices'][0]['message']['content'] if data != {} else 'Подключение к Gigachat не удалось'
-        return res
+        return data
 
 
 if __name__ == '__main__':
+    gigachat_connect_web_url = 'http://localhost:8078/'
     gigachat = GigaChatWebConnector()
     messages = [('system', 'Ты робот киска, на все вопросы отвечай мяу-мяу'),
                 ('user', 'Привет, как дела?')]
-    text_answer = gigachat.chat(messages, retry_cnt=3)
+    res = gigachat.chat(messages, retry_cnt=3)
+    text_answer = res['choices'][0]['message']['content'] if res != {} else 'Подключение к Gigachat не удалось'
     print(text_answer)

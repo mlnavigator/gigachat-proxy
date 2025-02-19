@@ -71,3 +71,5 @@ Cсылка на документацию к АПИ Гигачата
 на `from <my_connector> import validate_data, request_api, get_info`
 
 Так же при сборке через докер - лучше поменяйте имя контейнера в .sh скриптах
+
+Еще пара слов про использование на [https://llmstudio.ru/blog/llm-proxy-with-control-rps-and-threads](https://llmstudio.ru/blog/llm-proxy-with-control-rps-and-threads)

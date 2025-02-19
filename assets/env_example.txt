@@ -1,6 +1,9 @@
 # Cсылка на документацию к АПИ Гигачата
 # https://developers.sber.ru/docs/ru/gigachat/api/reference/rest/gigachat-api
 
+# !!! В файле с переменным окружения удалите все комментарии. Если оставить комментарии, питон ругнется на неверный формат файла. !!!
+# Комментарии - все что после #
+
 GIGACHAT_API_KEY=apikey  # ключа апи, см. readme.md
 GIGACHAT_MODEL=GigaChat-Max  # модель гигачата по умолчанию, если не будет указана в запросе
 GIGACHAT_SCOPE=GIGACHAT_API_CORP  # поменяйте значение на актуальное для вашей учетной записи
